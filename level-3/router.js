@@ -9,7 +9,6 @@ const {addTrip, tripsList, deleteTrip, getTripById, updateTrip} = require('./ser
  */
 router.get('/trips', function(req, res) {
   if (req.headers.authorization === "Basic secret") {
-    console.log("condition true");
     res.send(tripsList());
     res.status(200);
     return;
@@ -25,7 +24,6 @@ router.get('/trips', function(req, res) {
 */
 router.get('/trips/:id', function(req, res) {
   if (req.headers.authorization === "Basic secret") {
-    console.log("condition true");
     res.send(getTripById(req.params.id));
     res.status(200);
     return;
