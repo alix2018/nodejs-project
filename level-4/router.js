@@ -3,9 +3,7 @@ const router = express.Router();
 const {addTrip, tripsList, deleteTrip, getTripById, updateTrip} = require('./service');
 const {authMiddleware} = require('./middleware');
 
-router.use((req, res, next) => {
-  authMiddleware(req, res, next);
-});
+router.use(authMiddleware);
 
 /**
  * [GET] /trips
