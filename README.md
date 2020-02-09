@@ -1,8 +1,8 @@
 # NodeJS projects
 
 - Level 1: Create endpoints POST/GET/DELETE
-- Level 2: Separate service and router
-- Level 3: GET endpoints can be called only if the user is loggedin
+- Level 2: Use MVC architecture
+- Level 3: GET endpoints can be called only if the user is logged in
 
 ## Run the servers
 
