@@ -1,13 +1,7 @@
 const express = require('express');
-// let router = new Router;
-let router = express.Router();
+const router = express.Router();
 
-// import {addTrip, tripsList, deleteTrip, getTripById, updateTrip} from './tripService';
-const {addTrip, tripsList, deleteTrip, getTripById, updateTrip} = require('./server');
-
-// console.log("tripsList", tripsList());
-// console.log("addTrip", addTrip());
-// console.log("deleteTrip", deleteTrip());
+const {addTrip, tripsList, deleteTrip, getTripById, updateTrip} = require('./service');
 
 /**
  * [GET] /trips
