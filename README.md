@@ -9,5 +9,5 @@
 
 ```bash
 npm i
-node level-{n} server.js
+node level-{n}/server.js
 ```
