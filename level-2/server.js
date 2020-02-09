@@ -6,5 +6,4 @@ const router = require('./router');
 app.use(bodyParser.json());
 app.use(router);
 
-
 app.listen(8080);
