@@ -64,15 +64,16 @@ exports.checkIfUserLoggedIn = (user, userLoggedInCallback) => {
 
   if (userFound) {
     bcrypt.compare(user.password, userFound.password, function(err, result) {
-      if (Boolean(result)) {
+      if (result) {
         const token = jwt.sign(userFound, 'aB123456@');
         userLoggedInCallback(token);
-      } else {
-        userLoggedInCallback(false);
+        return;
       }
-      return;
+
+      userLoggedInCallback();
     });
+  } else {
+    userLoggedInCallback();
   }
 
-  userLoggedInCallback(false);
 }

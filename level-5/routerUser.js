@@ -7,8 +7,8 @@ const {addUser, usersList, getUserById, checkIfUserLoggedIn} = require('./servic
  * Return all the users in a list
  */
 router.get('/users', (req, res) => {
-  res.send(usersList());
   res.status(200);
+  res.send(usersList());
 });
 
 /**
@@ -16,8 +16,8 @@ router.get('/users', (req, res) => {
 * Return the user requested
 */
 router.get('/users/:id', (req, res) => {
-  res.send(getUserById(req.params.id));
   res.status(200);
+  res.send(getUserById(req.params.id));
 });
 
 /**
@@ -35,11 +35,11 @@ router.post('/users', (req, res) => {
 */
 router.post('/login', (req, res) => {
 
-  const userLoggedInCallback = (resLoggedIn) => {
-    const logginResponse = Boolean(resLoggedIn) ? {token: resLoggedIn} : 'login failed';
-    const status = Boolean(resLoggedIn) ? 200 : 403;
-    res.send(logginResponse);
+  const userLoggedInCallback = token => {
+    const bodyResponse = token ? {token: token} : 'login failed';
+    const status = token ? 200 : 403;
     res.status(status);
+    res.send(bodyResponse);
   }
 
   checkIfUserLoggedIn(req.body, userLoggedInCallback);
