@@ -34,9 +34,8 @@ router.post('/users', (req, res) => {
 * Login with a user
 */
 router.post('/login', (req, res) => {
-
   const userLoggedInCallback = token => {
-    const bodyResponse = token ? {token: token} : 'login failed';
+    const bodyResponse = token ? {token} : 'login failed';
     const status = token ? 200 : 403;
     res.status(status);
     res.send(bodyResponse);

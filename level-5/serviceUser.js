@@ -63,7 +63,7 @@ exports.checkIfUserLoggedIn = (user, userLoggedInCallback) => {
   const userFound = users.find(userDb => userDb.username == user.username);
 
   if (userFound) {
-    bcrypt.compare(user.password, userFound.password, function(err, result) {
+    bcrypt.compare(user.password, userFound.password, (error, result) => {
       if (result) {
         const token = jwt.sign(userFound, 'aB123456@');
         userLoggedInCallback(token);
