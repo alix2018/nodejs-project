@@ -20,14 +20,8 @@ exports.authMiddleware = (req, res, next) => {
 
 exports.checkTokenMiddleware = (req, res, next) => {
   const getUserInfoCallback = userInfo => {
-    if (userInfo.username) {
-      req.current_user = userInfo.username
-      next();
-      return;
-    }
-
-    res.status(403);
-    res.send('The token is invalid');
+    req.current_user = userInfo.username;
+    next();
   }
 
   if (req.headers.authorization) {
