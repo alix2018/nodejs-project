@@ -20,14 +20,14 @@ exports.authMiddleware = (req, res, next) => {
 
 exports.checkTokenMiddleware = (req, res, next) => {
   const getUserInfoCallback = userInfo => {
-    req.current_user = userInfo.username;
+    req.current_user = userInfo;
     next();
   }
 
   if (req.headers.authorization) {
     getUserInfo(req.headers.authorization, getUserInfoCallback);
   } else {
-    res.status(401);
-    res.send('You need a token');
+    req.current_user = null;
+    next();
   }
 }

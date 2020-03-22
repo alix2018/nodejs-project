@@ -53,7 +53,7 @@ router.post('/login', (req, res) => {
 * Login with a user
 */
 router.get('/me', (req, res) => {
-  const messageResponse = req.current_user ? `Your user name is ${req.current_user}` : 'The user is not connected';
+  const messageResponse = (req.current_user && req.current_user.username) ? `Your user name is ${req.current_user.username}` : 'The user is not connected';
   res.send(messageResponse);
   res.status(200);
 });
