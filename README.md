@@ -12,7 +12,8 @@
 - Level 7: Update middleware to give access to the user to all the endpoints
 
 ### Step 3: Using a Database
-- Level 8:
+- Level 8: Use Sequelize ORM and requests on "Users" table
+- Level 9: CRUD and add relation table
 
 ## Run the servers
 
