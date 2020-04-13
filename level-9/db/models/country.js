@@ -4,7 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   Country.associate = function(models) {
-    // associations can be defined here
+    models.Country.hasMany(models.User, {
+      as: 'users',
+      foreignKey: 'country_id'
+    });
   };
   return Country;
 };

@@ -6,7 +6,10 @@ module.exports = (sequelize, DataTypes) => {
     birthDate: DataTypes.DATE
   }, {});
   User.associate = function(models) {
-    // associations can be defined here
+    models.User.belongsTo(models.Country, {
+      targetKey: 'id',
+      foreignKey: 'country_id'
+    });
   };
   return User;
 };
