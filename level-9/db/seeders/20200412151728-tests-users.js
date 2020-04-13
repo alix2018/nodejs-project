@@ -6,13 +6,11 @@ module.exports = {
     )
     .then(
       countries => countries[0].reduce((accumulator, item) => {
-        console.log("item", item);
         accumulator[item.name] = item.id;
         return accumulator;
       }, {})
     )
       .then(country_keys => {
-        console.log("country_keys", country_keys);
         return queryInterface.bulkInsert('Users', [{
         username: 'Stephanie',
         gender: 'F',
@@ -55,6 +53,14 @@ module.exports = {
         updatedAt: new Date()
       },
       {
+        username: 'Claire',
+        gender: 'F',
+        country_id: country_keys.France,
+        birthDate: new Date('1992', '11', '11'),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
         username: 'Jacob',
         gender: 'M',
         birthDate: new Date('1985', '03', '24'),
@@ -63,15 +69,6 @@ module.exports = {
         updatedAt: new Date()
       }], {})
     })
-
-    // const country_keys = countries.reduce((accumulator, item) => ({...accumulator, [item.country_name]: item.id}), {});
-
-    // const country_keys = countries.reduce((accumulator, item) => {
-    //   accumulator[item.country_name] = item.id;
-    //   return accumulator;
-    // });
-
-    // return
   },
 
   down: (queryInterface, Sequelize) => {
