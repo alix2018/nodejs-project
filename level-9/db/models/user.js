@@ -10,6 +10,11 @@ module.exports = (sequelize, DataTypes) => {
       targetKey: 'id',
       foreignKey: 'country_id'
     });
+    models.User.hasMany(models.Visit, {
+      as: 'visits',
+      foreignKey: 'user_id',
+      sourceKey: 'id'
+    });
   };
   return User;
 };

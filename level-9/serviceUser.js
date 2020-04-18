@@ -18,22 +18,13 @@ exports.getUser = username => {
 }
 
 exports.getUserList = countryId => {
-  return db.Country.findAll({
-    raw: true,
+  return db.Country.findOne({
     attributes: ['id', 'name'],
     where: {id: countryId},
     include: [{model: db.User, as: 'users', attributes: ['username']}]
   })
     .then(res => {
-      const usersList = {
-        id: res[0].id,
-        country: res[0].name,
-        users: []
-      };
-
-      res.forEach(user => usersList.users.push(user['users.username']));
-
-      return usersList;
+      return res;
     })
     .catch(err => {
       throw new Error('Error:', err);
